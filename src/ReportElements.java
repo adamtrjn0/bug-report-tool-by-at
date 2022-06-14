@@ -11,6 +11,39 @@ public class ReportElements {
     private String repeatability;
 
 
+    public void addStep(ArrayList<String> list) {
+        Scanner scanner = new Scanner(System.in);
+        Scanner scanner2 = new Scanner(System.in);
+        int decision;
+        Boolean loopOn = true;
+
+        do {
+            System.out.println("Write:");
+            list.add(scanner.nextLine());
+            System.out.println("Add another step?");
+            decision = scanner2.nextInt();
+            if (decision == 1) {
+                loopOn = true;
+            } else {
+                loopOn = false;
+            }
+
+
+        } while (loopOn);
+
+
+    }
+
+    public void showList(ArrayList<String> list) {
+        int index = 1;
+        for (String i : list) {
+            System.out.print(index);
+            System.out.println("." + i);
+            index++;
+        }
+
+    }
+
     public String getTitle() {
         return title;
     }
@@ -95,6 +128,10 @@ public class ReportElements {
                     description = textInput;
                     break;
                 case 3:
+                    if (preConditions != null) {
+                        showList(preConditions);
+                    }
+                        addStep(preConditions);
 
                     break;
                 default:
