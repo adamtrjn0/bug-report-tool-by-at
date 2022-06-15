@@ -4,18 +4,44 @@ import java.util.Scanner;
 public class ReportElements {
     private String title;
     private String description;
-    private ArrayList<String> preConditions = new ArrayList<String>();
-    private ArrayList<String> stepsToDo = new ArrayList<String>();
+    private ArrayList<String> preConditions = new ArrayList<>();
+    private ArrayList<String> stepsToDo = new ArrayList<>();
     private String expectedResult;
     private String actualResult;
     private String repeatability;
 
+    public void printAll(){
+        System.out.println("Title: " + title);
+        System.out.println("Description: " + description);
+        System.out.println("Preconditions: "); showList(preConditions);
+//        System.out.println("Title: " + title);
+//        System.out.println("Title: " + title);
+//        System.out.println("Title: " + title);
+//        System.out.println("Title: " + title);
+
+
+    }
+    public void editStep(ArrayList<String> list) {
+        Scanner scanner = new Scanner(System.in);
+        Scanner scanner2 = new Scanner(System.in);
+        int decision;
+        String text;
+        do {
+            System.out.println("Which step do you want to edit?");
+            decision = (scanner.nextInt() - 1);
+        } while (decision < 0 || decision > list.size());
+
+        System.out.println("Text:");
+        text = scanner2.nextLine();
+        list.set(decision, text);
+
+    }
 
     public void addStep(ArrayList<String> list) {
         Scanner scanner = new Scanner(System.in);
         Scanner scanner2 = new Scanner(System.in);
         int decision;
-        Boolean loopOn = true;
+        Boolean loopOn;
 
         do {
             System.out.println("Write:");
@@ -101,7 +127,7 @@ public class ReportElements {
     }
 
     public void selectElement() {
-        if (true) {
+        while (true) {
             String textInput;
             Scanner scanner = new Scanner(System.in);
             Scanner scanner2 = new Scanner(System.in);
@@ -115,7 +141,7 @@ public class ReportElements {
                     if (title != null) {
                         System.out.println(title);
                     }
-                    System.out.println("Tytuł:");
+                    System.out.println("Title:");
                     textInput = scanner2.nextLine();
                     title = textInput;
                     break;
@@ -123,17 +149,26 @@ public class ReportElements {
                     if (description != null) {
                         System.out.println(description);
                     }
-                    System.out.println("Opis:");
+                    System.out.println("Desctiption:");
                     textInput = scanner2.nextLine();
                     description = textInput;
                     break;
                 case 3:
-                    if (preConditions != null) {
+                    if (!preConditions.isEmpty()) {
                         showList(preConditions);
-                    }
+                        editStep(preConditions);
+                        showList(preConditions);
+
+                    } else {
+
                         addStep(preConditions);
+                    }
 
                     break;
+                case 9:
+                    printAll();
+                    break;
+
                 default:
                     System.out.println("Ta funkcja na razie nie jest zaimplementowana");
             }
