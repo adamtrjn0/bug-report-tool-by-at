@@ -1,2 +1,113 @@
-public class ListElement {
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ListElement extends Element {
+    ArrayList<String> list;
+    private String name;
+    private String content;
+    Scanner scanner;
+    Scanner scanner2;
+
+    ListElement(String name){
+        setName(name);
+    }
+
+
+    public void addtoList() {
+        Boolean loopOn = true;
+        while (loopOn) {
+            int choice;
+            int index = 0;
+            setContent(scanner.nextLine());
+            list.add(index, getContent());
+            System.out.println("Add another step?\n1.Yes 2.No");
+            choice = scanner2.nextInt();
+            switch (choice) {
+                case 1:
+                    index++;
+                    break;
+                default:
+                    loopOn = false;
+            }
+        }
+    }
+
+    @Override
+    public void add() {
+        int choice;
+        if (!list.isEmpty()){
+            read();
+            System.out.println("Edit? 1.Yes 2.No");
+            choice = scanner2.nextInt();
+            switch (choice){
+                case 1:
+                    edit();
+                    break;
+                default:
+                    break;
+            }
+        }
+        else {
+            addtoList();
+        }
+
+    }
+
+    @Override
+    public void edit() {
+        int index;
+        int choice;
+        Boolean loopOn = true;
+        while (loopOn) {
+            System.out.println("Which step do you want to edit?");
+
+            index = scanner.nextInt();
+            if (index > 1 | index < list.size()) ;
+            {
+                setContent(scanner2.nextLine());
+                list.set((index - 1), getContent());
+                System.out.println("Edit again? 1.Yes 2.No");
+                choice = scanner2.nextInt();
+                switch (choice){
+                    case 1:
+                        index++;
+                        break;
+                    default:
+                        loopOn = false;
+                        break;
+                }
+
+
+            }
+        }
+
+    }
+
+
+    @Override
+    public void read() {
+        System.out.println(getName());
+        for (String i : list) {
+            int index = 1;
+            System.out.println(index + "." + i);
+            index++;
+        }
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }
