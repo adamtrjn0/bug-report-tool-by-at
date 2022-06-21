@@ -10,10 +10,23 @@ public class ReportElements {
     private String actualResult;
     private String repeatability;
 
-    public void printAll(){
-        System.out.println("Title: " + title);
-        System.out.println("Description: " + description);
-        System.out.println("Preconditions: "); showList(preConditions);
+
+    public void addElement(String variable, String name) {
+        Scanner scanner2 = new Scanner(System.in);
+        String data = variable;
+        if (variable != null) {
+            System.out.println(variable + ":");
+            System.out.println(variable);
+        }
+        System.out.println(name + ":");
+        variable = scanner2.nextLine();
+    }
+
+    public void printAll() {
+        System.out.println("Title: " + getTitle());
+        System.out.println("Description: " + getDescription());
+        System.out.println("Preconditions: ");
+        showList(preConditions);
 //        System.out.println("Title: " + title);
 //        System.out.println("Title: " + title);
 //        System.out.println("Title: " + title);
@@ -21,6 +34,7 @@ public class ReportElements {
 
 
     }
+
     public void editStep(ArrayList<String> list) {
         Scanner scanner = new Scanner(System.in);
         Scanner scanner2 = new Scanner(System.in);
@@ -29,7 +43,7 @@ public class ReportElements {
         do {
             System.out.println("Which step do you want to edit?");
             decision = (scanner.nextInt() - 1);
-        } while (decision < 0 || decision > list.size());
+        } while (decision < 0 | decision > list.size());
 
         System.out.println("Text:");
         text = scanner2.nextLine();
@@ -128,30 +142,18 @@ public class ReportElements {
 
     public void selectElement() {
         while (true) {
-            String textInput;
             Scanner scanner = new Scanner(System.in);
             Scanner scanner2 = new Scanner(System.in);
-
             System.out.println("Select some option:\n1.Title\n2.Desc\n3.Preconds\n4.Steps" +
-                    "\n5.Actual res\n.6.Expected res\n7.Repeatability");
+                    "\n5.Actual res\n6.Expected res\n7.Repeatability");
             int inputNumber = scanner.nextInt();
 
             switch (inputNumber) {
                 case 1:
-                    if (title != null) {
-                        System.out.println(title);
-                    }
-                    System.out.println("Title:");
-                    textInput = scanner2.nextLine();
-                    title = textInput;
+                   addElement(title,"Title");
                     break;
                 case 2:
-                    if (description != null) {
-                        System.out.println(description);
-                    }
-                    System.out.println("Desctiption:");
-                    textInput = scanner2.nextLine();
-                    description = textInput;
+                    addElement(description,"Description");
                     break;
                 case 3:
                     if (!preConditions.isEmpty()) {
@@ -160,11 +162,36 @@ public class ReportElements {
                         showList(preConditions);
 
                     } else {
-
                         addStep(preConditions);
                     }
-
                     break;
+                case 4:
+                    if (stepsToDo.isEmpty()) {
+                        showList(stepsToDo);
+                        editStep(stepsToDo);
+                        showList(stepsToDo);
+                    } else {
+                        addStep(stepsToDo);
+                    }
+                    break;
+                case 5:
+                    if (actualResult != null) {
+                        System.out.println(actualResult + ":");
+                        System.out.println(actualResult);
+                    }
+                    System.out.println("Text:");
+
+                    actualResult = scanner2.nextLine();
+                    break;
+                case 6:
+                    if (expectedResult != null) {
+                        System.out.println(expectedResult + ":");
+                        System.out.println(expectedResult);
+                    }
+                    System.out.println("Text:");
+                    expectedResult = scanner2.nextLine();
+                    break;
+
                 case 9:
                     printAll();
                     break;
