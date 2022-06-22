@@ -17,16 +17,19 @@ public class ReportElements {
             Scanner scanner = new Scanner(System.in);
             Scanner scanner2 = new Scanner(System.in);
             System.out.println("Select some option:\n1.Title\n2.Desc\n3.Preconds\n4.Steps" +
-                    "\n5.Actual res\n6.Expected res\n7.Repeatability\n0.Show results");
-            int inputNumber = (scanner.nextInt() - 1);
-            if (inputNumber == 8){
+                    "\n5.Actual res\n6.Expected res\n0.Show results");
+            int inputNumber = scanner.nextInt();
+            if (inputNumber == 0){
                 for (Element obj : elementsArr){
                     obj.read();
 
                 }
             }
-            else if (inputNumber < (elementsArr.length - 1)){
-                elementsArr[inputNumber].add();
+            else if (inputNumber <= elementsArr.length){
+                elementsArr[inputNumber - 1].add();
+            }
+            else {
+                System.out.println("Wrong input, please use numbers from 0-6");
             }
 
 
