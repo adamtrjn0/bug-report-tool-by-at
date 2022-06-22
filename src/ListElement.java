@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ListElement extends Element {
-    ArrayList<String> list;
+    ArrayList<String> list = new ArrayList<>();
     private String name;
     private String content;
-    Scanner scanner;
-    Scanner scanner2;
+    Scanner scanner = new Scanner(System.in);
+    Scanner scanner2 = new Scanner(System.in);
 
     ListElement(String name){
         setName(name);
@@ -14,10 +14,11 @@ public class ListElement extends Element {
 
 
     public void addtoList() {
+        int index = 0;
         Boolean loopOn = true;
         while (loopOn) {
             int choice;
-            int index = 0;
+            System.out.println("Text:");
             setContent(scanner.nextLine());
             list.add(index, getContent());
             System.out.println("Add another step?\n1.Yes 2.No");
@@ -64,7 +65,8 @@ public class ListElement extends Element {
             index = scanner.nextInt();
             if (index > 1 | index < list.size()) ;
             {
-                setContent(scanner2.nextLine());
+                System.out.println("Text:");
+                setContent(scanner2.next());
                 list.set((index - 1), getContent());
                 System.out.println("Edit again? 1.Yes 2.No");
                 choice = scanner2.nextInt();
@@ -86,9 +88,10 @@ public class ListElement extends Element {
 
     @Override
     public void read() {
-        System.out.println(getName());
+        int index = 1;
+        System.out.println(getName() + ":");
         for (String i : list) {
-            int index = 1;
+
             System.out.println(index + "." + i);
             index++;
         }

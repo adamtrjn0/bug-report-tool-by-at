@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class SingleElement extends Element{
     private String name;
     private String content;
-    Scanner scanner;
-    Scanner scanner2;
+    Scanner scanner = new Scanner(System.in);
+    Scanner scanner2 = new Scanner(System.in);
 
     SingleElement(String name){
         setName(name);
@@ -12,7 +12,6 @@ public class SingleElement extends Element{
 
     @Override
     public void add() {
-        scanner = new Scanner(System.in);
 
         if (getContent() != null) {
            read();
