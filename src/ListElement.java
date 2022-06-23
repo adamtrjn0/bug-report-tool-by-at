@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -93,6 +94,17 @@ public class ListElement extends Element {
         for (String i : list) {
 
             System.out.println(index + "." + i);
+            index++;
+        }
+
+    }
+
+    @Override
+    public void saveToFile(PrintWriter printWriter) {
+        int index = 1;
+        printWriter.println(getName() + ":");
+        for (String i : list) {
+            printWriter.println(index + "." + i);
             index++;
         }
 

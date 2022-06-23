@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class SingleElement extends Element{
@@ -53,6 +54,13 @@ public class SingleElement extends Element{
         System.out.println(getContent());
     }
 
+
+    @Override
+    public void saveToFile(PrintWriter printWriter) {
+        printWriter.println(getName() + ":");
+        printWriter.println(getContent());
+
+    }
 
     public String getName() {
         return name;

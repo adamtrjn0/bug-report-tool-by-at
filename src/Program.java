@@ -1,6 +1,13 @@
+import java.io.IOException;
+
 public class Program {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ReportElements test = new ReportElements();
-        test.selectElement();
+        try {
+            test.selectElement();
+        }
+        catch (IOException exc){
+            System.out.println("Coś się zjebało z zapisem!!!!!!!!");
+        }
     }
 }
