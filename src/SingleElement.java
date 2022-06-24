@@ -13,7 +13,6 @@ public class SingleElement extends Element{
 
     @Override
     public void add() {
-
         if (getContent() != null) {
            read();
            edit();
@@ -30,16 +29,21 @@ public class SingleElement extends Element{
 
     @Override
     public void edit() {
+        Scanner editScanner = new Scanner(System.in);
         int choice;
         System.out.println("Edit? 1.Yes 2.No");
-        choice = scanner2.nextInt();
-        switch (choice){
-            case 1:
-                System.out.println(getName() + ":");
-                setContent(scanner.nextLine());
-                break;
-            default:
-                break;
+        if (editScanner.hasNextInt()) {
+            choice = editScanner.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println(getName() + ":");
+                    setContent(editScanner.nextLine());
+                    break;
+                default:
+                    break;
+            }
+        }else {
+            wrongInputInfo(editScanner);
         }
 
 

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TesteroPomagacz:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TesteroPomagacz_jar</output-path>
+    <root id="archive" name="TesteroPomagacz.jar">
+      <element id="module-output" name="TesteroPomagacz" />
+    </root>
+  </artifact>
+</component>
