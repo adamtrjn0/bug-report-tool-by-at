@@ -8,11 +8,12 @@ public class ReportElements {
 
     SingleElement title = new SingleElement("Title");
     SingleElement description = new SingleElement("Description");
+    SingleElement environment = new SingleElement("Environment");
     SingleElement actualResult = new SingleElement("Actual result");
     SingleElement expectedResult = new SingleElement("Expected result");
     ListElement preConditions = new ListElement("Preconditions");
     ListElement stepsToDo = new ListElement("Steps to do");
-    Element[] elementsArr = {title, description, preConditions, stepsToDo, actualResult, expectedResult};
+    Element[] elementsArr = {title, description, environment, preConditions, stepsToDo, actualResult, expectedResult};
     FileHandler fileHandler = new FileHandler();
     Boolean loopOn = true;
 
@@ -21,8 +22,8 @@ public class ReportElements {
         while (loopOn) {
             Scanner scanner = new Scanner(System.in);
             Scanner scanner2 = new Scanner(System.in);
-            System.out.println("Select some option:\n1.Title\n2.Desc\n3.Preconds\n4.Steps" +
-                    "\n5.Actual res\n6.Expected res\n9.Save to file\n10.Quit\n0.Show results");
+            System.out.println("Select some option:\n1.Title\n2.Desc\n3.Environment\n4.Preconds\n5.Steps" +
+                    "\n6.Actual res\n7.Expected res\n8.Repeatability\n9.Save to file\n10.Quit\n0.Show results");
 
                 int inputNumber = scanner.nextInt();
 
