@@ -2,14 +2,18 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class RepeatabilityElement extends Element {
-    int tries;
-    int fails;
-    String name;
-    String content;
+    private int tries;
+    private int fails;
+    private String name;
+    private String content;
+
+    RepeatabilityElement(String name) {
+        this.name = name;
+    }
 
     @Override
     public void add() {
-        if (content != null) {
+        if (getContent() != null) {
             read();
             edit();
         } else {
@@ -18,53 +22,94 @@ public class RepeatabilityElement extends Element {
             do {
                 System.out.println("How many tries?");
                 if (addScanner.hasNextInt()) {
-                    tries = addScanner.nextInt();
+                    setTries(addScanner.nextInt());
+
                     System.out.println("How many failed?");
+
                     if (addScanner.hasNextInt()) {
-                        fails = addScanner.nextInt();
-                        content = name + ": " + countPercents() + "% " + fails + "/" + tries;
-                        loopOn = false;
+                        setFails(addScanner.nextInt());
+                        if (countPercents() != 0) {
+
+                            setContent(getName() + ": " + countPercents() + "% " + getFails() + "/" + getTries());
+                            loopOn = false;
+
+                        } else {
+                            System.out.println("Amount of fails should be lower than tries or equal");
+                        }
                     }
                 }
+
             } while (loopOn);
         }
     }
 
     @Override
     public void edit() {
-        boolean loopOn = true;
-        Scanner addScanner = new Scanner(System.in);
-        do {
-            System.out.println("How many tries?");
-            if (addScanner.hasNextInt()) {
-                tries = addScanner.nextInt();
-                System.out.println("How many failed?");
-                if (addScanner.hasNextInt()) {
-                    fails = addScanner.nextInt();
-                    content = name + ": " + countPercents() + "% " + fails + "/" + tries;
-                    loopOn = false;
-                }
-            }
-        } while (loopOn);
+     read();
+     add();
     }
 
 
     @Override
     public void read() {
-        System.out.println(content);
+        System.out.println(getContent());
 
 
     }
 
     public double countPercents() {
         double result;
-        result = 100 / (tries / fails);
-        return result;
+        if (getTries() >= getFails()) {
+            result = 100 / (getTries() / getFails());
+            return result;
+        } else setFails(0);
+        setTries(0);
+        return 0;
+
 
     }
 
     @Override
     public void saveToFile(PrintWriter printWriter) {
+        printWriter.println(getName() + ":");
+        printWriter.println(getContent());
+    }
 
+    public int getTries() {
+        return tries;
+    }
+
+    public void setTries(int tries) {
+        if (tries > 0) {
+            this.tries = tries;
+        }
+        else{
+            this.tries = 5;
+            System.out.println("Amount of tries set to default (5)");
+        }
+    }
+
+    public int getFails() {
+        return fails;
+    }
+
+    public void setFails(int fails) {
+        this.fails = fails;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }
