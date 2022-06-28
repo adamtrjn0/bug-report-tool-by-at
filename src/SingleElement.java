@@ -5,7 +5,6 @@ public class SingleElement extends Element{
     private String name;
     private String content;
     Scanner scanner = new Scanner(System.in);
-    Scanner scanner2 = new Scanner(System.in);
 
     SingleElement(String name){
         setName(name);
@@ -64,6 +63,9 @@ public class SingleElement extends Element{
         printWriter.println(getName() + ":");
         printWriter.println(getContent());
 
+    }
+    public void clear(){
+        setContent(null);
     }
 
     public String getName() {

@@ -58,6 +58,13 @@ public class RepeatabilityElement extends Element {
 
     }
 
+    @Override
+    public void clear() {
+        setContent(null);
+        setTries(0);
+        setFails(0);
+    }
+
     public double countPercents() {
         double result;
         if (getTries() >= getFails()) {
@@ -113,4 +120,5 @@ public class RepeatabilityElement extends Element {
     public void setContent(String content) {
         this.content = content;
     }
+
 }

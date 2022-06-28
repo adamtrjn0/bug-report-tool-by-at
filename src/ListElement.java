@@ -123,6 +123,8 @@ public class ListElement extends Element {
 
     }
 
+
+
     @Override
     public void saveToFile(PrintWriter printWriter) {
         int index = 1;
@@ -132,6 +134,9 @@ public class ListElement extends Element {
             index++;
         }
 
+    }
+    public void clear(){
+        list.clear();
     }
 
     public String getName() {

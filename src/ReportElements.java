@@ -28,27 +28,32 @@ public class ReportElements {
 
             int inputNumber = scanner.nextInt();
 
-
-            if (inputNumber == 0) {
-                for (Element obj : elementsArr) {
-                    obj.read();
-
-                }
-            } else if (inputNumber == 9) {
-                String fileName;
-                do {
-                    System.out.println("Name your file:");
-                    fileName = scanner2.nextLine();
-                } while (fileName == null);
-
-                fileHandler.saveFile(fileName, elementsArr);
-            } else if (inputNumber <= elementsArr.length) {
-                elementsArr[inputNumber - 1].add();
-            } else if (inputNumber == 10) {
-                System.out.println("Goodbye!");
-                loopOn = false;
-            } else {
-                System.out.println("Wrong input, please use numbers from 0-6");
+            switch (inputNumber) {
+                case 0:
+                    for (Element obj : elementsArr) {
+                        obj.read();
+                        break;
+                    }
+                case 9:
+                    String fileName;
+                    do {
+                        System.out.println("Name your file:");
+                        fileName = scanner2.nextLine();
+                    } while (fileName == null);
+                    fileHandler.saveFile(fileName, elementsArr);
+                    break;
+                case 10:
+                    System.out.println("Goodbye!");
+                    loopOn = false;
+                    break;
+                case 11:
+                    Element.cleanTemplate(elementsArr);
+                    break;
+                case 1, 2, 3, 4, 5, 6, 7, 8:
+                    elementsArr[inputNumber - 1].add();
+                    break;
+                default:
+                    System.out.println("Wrong input, please use numbers from 0-11");
             }
 
 
