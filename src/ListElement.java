@@ -105,7 +105,7 @@ public class ListElement extends Element {
                 }
 
             } else {
-               wrongInputInfo(editScanner);
+                wrongInputInfo(editScanner);
             }
         }
     }

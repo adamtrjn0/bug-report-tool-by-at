@@ -30,7 +30,7 @@ public class RepeatabilityElement extends Element {
                         setFails(addScanner.nextInt());
                         if (countPercents() != 0) {
 
-                            setContent(getName() + ": " + countPercents() + "% " + getFails() + "/" + getTries());
+                            setContent( countPercents() + "% " + getFails() + "/" + getTries());
                             loopOn = false;
 
                         } else {
@@ -52,7 +52,8 @@ public class RepeatabilityElement extends Element {
 
     @Override
     public void read() {
-        System.out.println(getContent());
+
+        System.out.println(getName() + ": \n" + getContent());
 
 
     }
