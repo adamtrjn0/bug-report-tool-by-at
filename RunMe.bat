@@ -1,0 +1,1 @@
+java -jar .\out\artifacts\BugReportToolByAT_jar\TesteroPomagacz.jar

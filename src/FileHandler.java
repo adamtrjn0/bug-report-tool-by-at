@@ -8,7 +8,7 @@ PrintWriter printWriter;
 final String SAVE_PATH = "C:\\Users\\adamt\\OneDrive\\Pulpit\\Testy\\";
 
 public void saveFile(String fileName ,Element[] list) throws IOException {
-    fileWriter = new FileWriter(SAVE_PATH + fileName);
+    fileWriter = new FileWriter(SAVE_PATH + fileName + ".txt");
     printWriter = new PrintWriter(fileWriter);
     for (Element obj : list){
         obj.saveToFile(printWriter);

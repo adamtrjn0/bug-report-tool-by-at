@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BugReportToolByAT.jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BugReportToolByAT_jar</output-path>
+    <root id="archive" name="TesteroPomagacz.jar">
+      <element id="module-output" name="BugReportToolByAT" />
+    </root>
+  </artifact>
+</component>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TesteroPomagacz.iml" filepath="$PROJECT_DIR$/TesteroPomagacz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BugReportToolByAT.iml" filepath="$PROJECT_DIR$/BugReportToolByAT.iml" />
     </modules>
   </component>
 </project>
