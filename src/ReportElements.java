@@ -24,7 +24,7 @@ public class ReportElements {
             Scanner scanner = new Scanner(System.in);
             Scanner scanner2 = new Scanner(System.in);
             System.out.println("Select some option:\n1.Title\n2.Desc\n3.Environment\n4.Preconds\n5.Steps" +
-                    "\n6.Actual res\n7.Expected res\n8.Repeatability\n9.Save to file\n10.Quit\n0.Show results");
+                    "\n6.Actual res\n7.Expected res\n8.Repeatability\n9.Save to file\n10.Quit\n11.Clear all\n0.Show results");
 
             int inputNumber = scanner.nextInt();
 
@@ -32,8 +32,8 @@ public class ReportElements {
                 case 0:
                     for (Element obj : elementsArr) {
                         obj.read();
-                        break;
                     }
+                    break;
                 case 9:
                     String fileName;
                     do {
@@ -48,6 +48,7 @@ public class ReportElements {
                     break;
                 case 11:
                     Element.cleanTemplate(elementsArr);
+                    System.out.println("Template cleared!");
                     break;
                 case 1, 2, 3, 4, 5, 6, 7, 8:
                     elementsArr[inputNumber - 1].add();
