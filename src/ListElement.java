@@ -14,23 +14,23 @@ public class ListElement extends Element {
 
 
     public void addtoList() {
-        Scanner addToListScannerString = new Scanner(System.in);
-        Scanner addToListScannerInt = new Scanner(System.in);
+        Scanner addToListScannerText = new Scanner(System.in);
+        Scanner addToListScannerChoice = new Scanner(System.in);
         int index = 0;
         Boolean loopOn = true;
         System.out.println("Text:");
-        setContent(addToListScannerString.nextLine());
+        setContent(addToListScannerText.nextLine());
         list.add(index, getContent());
         while (loopOn) {
             int choice;
             System.out.println("Add another step?\n1.Yes 2.No");
-            if (addToListScannerInt.hasNextInt()) {
-                choice = addToListScannerInt.nextInt();
+            if (addToListScannerChoice.hasNextInt()) {
+                choice = addToListScannerChoice.nextInt();
                 switch (choice) {
                     case 1:
                         index++;
                         System.out.println("Text:");
-                        setContent(addToListScannerString.nextLine());
+                        setContent(addToListScannerText.nextLine());
                         list.add(index, getContent());
                         break;
                     default:
@@ -38,7 +38,7 @@ public class ListElement extends Element {
                 }
 
             } else {
-                wrongInputInfo(addToListScannerInt);
+                wrongInputInfo(addToListScannerChoice);
             }
         }
 
@@ -51,12 +51,15 @@ public class ListElement extends Element {
 
         if (!list.isEmpty()) {
             read();
-            System.out.println("Edit? 1.Yes 2.No");
+            System.out.println("Edit? 1.Yes 2.No 3.Add another step");
             if (addScaner.hasNextInt()) {
                 choice = addScaner.nextInt();
                 switch (choice) {
                     case 1:
                         edit();
+                        break;
+                    case 3:
+                        addAnotherStep();
                         break;
                     default:
                         break;
@@ -109,7 +112,37 @@ public class ListElement extends Element {
             }
         }
     }
+    public void addAnotherStep(){
+        Scanner addToListScannerText = new Scanner(System.in);
+        Scanner addToListScannerChoice = new Scanner(System.in);
+        int lengthOfList = list.size();
+        int index = lengthOfList;
+        Boolean loopOn = true;
+        System.out.println("Text:");
+        setContent(addToListScannerText.nextLine());
+        list.add(index, getContent());
+        while (loopOn) {
+            int choice;
+            System.out.println("Add another step?\n1.Yes 2.No");
+            if (addToListScannerChoice.hasNextInt()) {
+                choice = addToListScannerChoice.nextInt();
+                switch (choice) {
+                    case 1:
+                        index++;
+                        System.out.println("Text:");
+                        setContent(addToListScannerText.nextLine());
+                        list.add(index, getContent());
+                        break;
+                    default:
+                        loopOn = false;
+                }
 
+            } else {
+                wrongInputInfo(addToListScannerChoice);
+            }
+        }
+
+    }
 
     @Override
     public void read() {
@@ -122,6 +155,7 @@ public class ListElement extends Element {
         }
 
     }
+
 
 
 
