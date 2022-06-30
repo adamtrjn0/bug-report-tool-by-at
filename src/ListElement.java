@@ -14,23 +14,23 @@ public class ListElement extends Element {
 
 
     public void addtoList() {
-        Scanner addToListScannerText = new Scanner(System.in);
+        Scanner addToListScannerContent = new Scanner(System.in);
         Scanner addToListScannerChoice = new Scanner(System.in);
         int index = 0;
         Boolean loopOn = true;
         System.out.println("Text:");
-        setContent(addToListScannerText.nextLine());
+        setContent(addToListScannerContent.nextLine());
         list.add(index, getContent());
         while (loopOn) {
             int choice;
-            System.out.println("Add another step?\n1.Yes 2.No");
+            System.out.println("Add the another step?\n1.Yes 2.No");
             if (addToListScannerChoice.hasNextInt()) {
                 choice = addToListScannerChoice.nextInt();
                 switch (choice) {
                     case 1:
                         index++;
                         System.out.println("Text:");
-                        setContent(addToListScannerText.nextLine());
+                        setContent(addToListScannerContent.nextLine());
                         list.add(index, getContent());
                         break;
                     default:
@@ -111,26 +111,27 @@ public class ListElement extends Element {
                 wrongInputInfo(editScanner);
             }
         }
+
     }
     public void addAnotherStep(){
-        Scanner addToListScannerText = new Scanner(System.in);
+        Scanner addToListScannerContent = new Scanner(System.in);
         Scanner addToListScannerChoice = new Scanner(System.in);
         int lengthOfList = list.size();
         int index = lengthOfList;
         Boolean loopOn = true;
         System.out.println("Text:");
-        setContent(addToListScannerText.nextLine());
+        setContent(addToListScannerContent.nextLine());
         list.add(index, getContent());
         while (loopOn) {
             int choice;
-            System.out.println("Add another step?\n1.Yes 2.No");
+            System.out.println("Add the another step?\n1.Yes 2.No");
             if (addToListScannerChoice.hasNextInt()) {
                 choice = addToListScannerChoice.nextInt();
                 switch (choice) {
                     case 1:
                         index++;
                         System.out.println("Text:");
-                        setContent(addToListScannerText.nextLine());
+                        setContent(addToListScannerContent.nextLine());
                         list.add(index, getContent());
                         break;
                     default:

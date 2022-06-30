@@ -1,52 +1,47 @@
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class SingleElement extends Element{
+public class SingleElement extends Element {
     private String name;
     private String content;
-    Scanner scanner = new Scanner(System.in);
 
-    SingleElement(String name){
+    SingleElement(String name) {
         setName(name);
     }
 
     @Override
     public void add() {
+        Scanner addScanner = new Scanner(System.in);
         if (getContent() != null) {
-           read();
-           edit();
+            read();
+            edit();
+        } else {
+            System.out.println(getName() + ":");
+            setContent(addScanner.nextLine());
         }
-        else {
 
-
-        System.out.println(getName() + ":");
-        setContent(scanner.nextLine());
     }
-        }
-
 
 
     @Override
     public void edit() {
-        Scanner editScanner = new Scanner(System.in);
+        Scanner editScannerChoice = new Scanner(System.in);
+        Scanner editScannerContent = new Scanner(System.in);
         int choice;
         System.out.println("Edit? 1.Yes 2.No");
-        if (editScanner.hasNextInt()) {
-            choice = editScanner.nextInt();
+        if (editScannerChoice.hasNextInt()) {
+            choice = editScannerChoice.nextInt();
             switch (choice) {
                 case 1:
                     System.out.println(getName() + ":");
-                    setContent(editScanner.nextLine());
+                    setContent(editScannerContent.nextLine());
                     break;
                 default:
                     break;
             }
-        }else {
-            wrongInputInfo(editScanner);
+        } else {
+            wrongInputInfo(editScannerChoice);
         }
-
-
-
 
 
     }
@@ -64,7 +59,8 @@ public class SingleElement extends Element{
         printWriter.println(getContent());
 
     }
-    public void clear(){
+
+    public void clear() {
         setContent(null);
     }
 

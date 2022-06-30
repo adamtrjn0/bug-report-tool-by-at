@@ -21,14 +21,14 @@ public class ReportElements {
 
     public void selectElement() throws IOException, InputMismatchException {
         while (loopOn) {
-            Scanner scanner = new Scanner(System.in);
-            Scanner scanner2 = new Scanner(System.in);
+            Scanner choiceScanner = new Scanner(System.in);
+            Scanner fileNameScanner = new Scanner(System.in);
             System.out.println("Select some option:\n1.Title\n2.Desc\n3.Environment\n4.Preconds\n5.Steps" +
                     "\n6.Actual res\n7.Expected res\n8.Repeatability\n9.Save to file\n10.Quit\n11.Clear all\n0.Show results");
 
-            int inputNumber = scanner.nextInt();
+            int choice = choiceScanner.nextInt();
 
-            switch (inputNumber) {
+            switch (choice) {
                 case 0:
                     for (Element obj : elementsArr) {
                         obj.read();
@@ -38,7 +38,7 @@ public class ReportElements {
                     String fileName;
                     do {
                         System.out.println("Name your file:");
-                        fileName = scanner2.nextLine();
+                        fileName = fileNameScanner.nextLine();
                     } while (fileName == null);
                     fileHandler.saveFile(fileName, elementsArr);
                     break;
@@ -51,7 +51,7 @@ public class ReportElements {
                     System.out.println("Template cleared!");
                     break;
                 case 1, 2, 3, 4, 5, 6, 7, 8:
-                    elementsArr[inputNumber - 1].add();
+                    elementsArr[choice - 1].add();
                     break;
                 default:
                     System.out.println("Wrong input, please use numbers from 0-11");
