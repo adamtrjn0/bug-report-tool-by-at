@@ -154,6 +154,7 @@ public class ListElement extends Element {
             System.out.println(index + "." + i);
             index++;
         }
+        System.out.println();
 
     }
 
@@ -168,6 +169,7 @@ public class ListElement extends Element {
             printWriter.println(index + "." + i);
             index++;
         }
+       printWriter.println();
 
     }
     public void clear(){

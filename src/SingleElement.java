@@ -50,13 +50,15 @@ public class SingleElement extends Element {
     public void read() {
         System.out.println(getName() + ":");
         System.out.println(getContent());
+        System.out.println();
     }
 
 
     @Override
     public void saveToFile(PrintWriter printWriter) {
         printWriter.println(getName() + ":");
-        printWriter.println(getContent());
+        printWriter.println(getContent() + "\n");
+
 
     }
 

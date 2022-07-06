@@ -80,7 +80,8 @@ public class RepeatabilityElement extends Element {
     @Override
     public void saveToFile(PrintWriter printWriter) {
         printWriter.println(getName() + ":");
-        printWriter.println(getContent());
+        printWriter.println(getContent() + "\n");
+
     }
 
     public int getTries() {
