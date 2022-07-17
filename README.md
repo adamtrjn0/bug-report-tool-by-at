@@ -5,4 +5,5 @@ After filling up the template, result can be saved as a .txt file.
 
 # How to use
  1.Choose output directory of your choice by editing the SAVE_PATH constant in the FileHandler class </br>
- 2.Run the program by opening the RunMe.bat executable
+ 2.Build a new JAR file
+ 3.Run the program by opening the RunMe.bat executable
