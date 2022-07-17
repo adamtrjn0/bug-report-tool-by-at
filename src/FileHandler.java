@@ -1,20 +1,27 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class FileHandler {
-FileWriter fileWriter;
-PrintWriter printWriter;
-final String SAVE_PATH = "C:\\Users\\adamt\\OneDrive\\Pulpit\\Testy\\";
+    FileWriter fileWriter;
+    PrintWriter printWriter;
 
-public void saveFile(String fileName ,Element[] list) throws IOException {
-    fileWriter = new FileWriter(SAVE_PATH + fileName + ".txt");
-    printWriter = new PrintWriter(fileWriter);
-    for (Element obj : list){
-        obj.saveToFile(printWriter);
+
+    public static String readFileAsString() throws Exception {
+        String data = "";
+        data = new String(Files.readAllBytes(Paths.get("savePath.txt")));
+        return data;
     }
-    printWriter.close();
-    System.out.println("File saved properly!");
-}
+
+    public void saveFile(String fileName, Element[] list) throws Exception {
+        String saveDirectory = readFileAsString();
+        fileWriter = new FileWriter(saveDirectory + fileName + ".txt");
+        printWriter = new PrintWriter(fileWriter);
+        for (Element obj : list) {
+            obj.saveToFile(printWriter);
+        }
+        printWriter.close();
+        System.out.println("File saved properly!");
+    }
 
 }

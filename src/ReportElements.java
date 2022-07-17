@@ -19,7 +19,7 @@ public class ReportElements {
     FileHandler fileHandler = new FileHandler();
     Boolean loopOn = true;
 
-    public void selectElement() throws IOException, InputMismatchException {
+    public void selectElement() throws Exception {
         while (loopOn) {
             Scanner choiceScanner = new Scanner(System.in);
             Scanner fileNameScanner = new Scanner(System.in);
