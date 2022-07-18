@@ -24,10 +24,13 @@ public class ReportElements {
             Scanner choiceScanner = new Scanner(System.in);
             Scanner fileNameScanner = new Scanner(System.in);
             System.out.println("Select some option:\n1.Title\n2.Desc\n3.Environment\n4.Preconds\n5.Steps" +
-                    "\n6.Actual res\n7.Expected res\n8.Repeatability\n9.Save to file\n10.Quit\n11.Clear all\n0.Show results");
+                    "\n6.Actual res\n7.Expected res\n8.Repeatability\n9.Save to file\n10.Quit\n11.Clear all\n" +
+                    "12.Change save directory\n0.Show results");
+            if (FileHandler.getSaveDirectory() == null) {
+                FileHandler.setSaveDirectory();
+            }
 
             int choice = choiceScanner.nextInt();
-
             switch (choice) {
                 case 0:
                     for (Element obj : elementsArr) {
@@ -50,11 +53,14 @@ public class ReportElements {
                     Element.cleanTemplate(elementsArr);
                     System.out.println("Template cleared!");
                     break;
+                case 12:
+                    FileHandler.setSaveDirectory();
+                    break;
                 case 1, 2, 3, 4, 5, 6, 7, 8:
                     elementsArr[choice - 1].add();
                     break;
                 default:
-                    System.out.println("Wrong input, please use numbers from 0-11");
+                    System.out.println("Wrong input, please use numbers from 0-12");
             }
 
 

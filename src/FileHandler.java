@@ -1,21 +1,14 @@
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class FileHandler {
     FileWriter fileWriter;
     PrintWriter printWriter;
+    private static String saveDirectory;
 
-
-    public static String readFileAsString() throws Exception {
-        String data = "";
-        data = new String(Files.readAllBytes(Paths.get("savePath.txt")));
-        return data;
-    }
 
     public void saveFile(String fileName, Element[] list) throws Exception {
-        String saveDirectory = readFileAsString();
-        fileWriter = new FileWriter(saveDirectory + fileName + ".txt");
+        fileWriter = new FileWriter(getSaveDirectory() + fileName + ".txt");
         printWriter = new PrintWriter(fileWriter);
         for (Element obj : list) {
             obj.saveToFile(printWriter);
@@ -24,4 +17,12 @@ public class FileHandler {
         System.out.println("File saved properly!");
     }
 
+    public static String getSaveDirectory() {
+        return saveDirectory;
+    }
+
+    public static void setSaveDirectory() {
+        Scanner scanner = new Scanner(System.in);
+        saveDirectory = scanner.nextLine();
+    }
 }
