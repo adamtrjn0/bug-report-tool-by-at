@@ -23,6 +23,7 @@ public class FileHandler {
 
     public static void setSaveDirectory() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Save directory: ");
         saveDirectory = scanner.nextLine();
     }
 }
